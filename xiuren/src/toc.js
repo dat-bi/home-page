@@ -1,13 +1,12 @@
+// mục lục 
 function execute(url) {
-    let id = /hentai-img.com\/(image|story)\/([a-z0-9-]+)\/?/.exec(url);
-
-    if (id) id = id[2];
-    let response = fetch("https://hentai-img.com/image/" + id + "/");
+    let id = /xiuren.biz\/([\u4e00-\u9fff\w-]+)\/?/.exec(url);
+    if (id) id = id[1];
 
     let data = [];
     data.push({
-        name: response.html().select("#title").text(),
-        url: "https://hentai-img.com/story/" + id
+        name: 'OneShot',
+        url: "https://xiuren.biz/" + id
     })
 
     return Response.success(data);

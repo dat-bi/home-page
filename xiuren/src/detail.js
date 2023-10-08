@@ -1,18 +1,18 @@
+load('config.js');
 function execute(url) {
-    let id = /hentai-img.com\/(image|story)\/([a-z0-9-]+)\/?/.exec(url);
+    let id = /https:\/\/xiuren.biz\/([\u4e00-\u9fff\w-]+)\/?/.exec(url);
 
-    if (id) id = id[2];
-    let newUrl = "https://hentai-img.com/image/" + id + "/";
+    if (id) id = id[1];
+    let newUrl = "https://xiuren.biz/" + id + "/";
     let response = fetch(newUrl);
     if (response.ok) {
         let doc = response.html();
         return Response.success({
-            name: doc.select("#title").first().text(),
-            cover: doc.select("#post img").first().attr("src"),
-            author: "",
-            description: doc.select("#detail_tag").html(),
-            host: "https://hentaivn.moe",
-            nsfw: true,
+            name: doc.select("h1.jeg_post_title").text(),
+            cover: doc.select("div.content-inner > p > a > img").last().attr("src"),
+            author: doc.select("div.jeg_post_tags a").last().text(),
+            description: doc.select("div.jeg_post_tags a").first().text() + "   Người Mẫu: " +  doc.select("div.jeg_post_tags a").last().text(),
+            host: BASE_URL,
             url: newUrl
         });
     }

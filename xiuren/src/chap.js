@@ -4,7 +4,7 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let data = [];
-        doc.select("amp-story-page amp-img").forEach(e => {
+        doc.select("div.content-inner > p > a > img").forEach(e => {
             data.push(e.attr("src"));
         });
 

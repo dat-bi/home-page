@@ -6,12 +6,11 @@ function execute(url, page) {
     if (response.ok) {
         let doc = response.html();
         let data = [];
-
         doc.select(".jeg_posts article").forEach(e => {
             data.push({
                 name: e.select(".jeg_post_title a").first().text(),
                 link: e.select(".jeg_post_title a").first().attr("href"),
-                cover: e.select(".thumbnail-container img").first().attr("src"),
+                cover: e.select("img").first().attr("data-src"),
                 host: BASE_URL
             })
         });
