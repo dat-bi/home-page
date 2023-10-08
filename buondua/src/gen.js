@@ -14,7 +14,7 @@ function execute(url, page) {
         doc.select(".blog.columns > .items-row.column").forEach(e => {
             data.push({
                 name: e.select(".item-thumb img").attr("alt"),
-                link: BASE_URL+e.select(".page-header a").first().attr("href"),
+                link: BASE_URL +  encodeURIComponent(e.select(".page-header a").first().attr("href")).replace("%2F","/") ,
                 cover: e.select(".item-thumb img").attr("src"),
                 host: BASE_URL
             })

@@ -1,10 +1,7 @@
 load('config.js');
 function execute(url) {
-    let id = /https:\/\/buondua.com\/([\w-]+(?:-\w+)*)/.exec(url);
-
-    if (id) id = id[1];
-    let newUrl = "https://buondua.com/" + id;
-    let response = fetch(newUrl);
+    url = decodeURIComponent(url)
+    let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
         let tags = [];
@@ -21,7 +18,7 @@ function execute(url) {
             author: 'Không có Tác Giả',
             description: str,
             host: BASE_URL,
-            url: newUrl
+            // url: newUrl
         });
     }
     return null;

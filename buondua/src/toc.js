@@ -1,10 +1,7 @@
 // mục lục 
 function execute(url) {
-    let id = /https:\/\/buondua.com\/([\w-]+(?:-\w+)*)/.exec(url);
-    if (id) id = id[1];
-    let newUrl = "https://buondua.com/" + id;
-
-    let response= fetch(newUrl);
+    url = decodeURIComponent(url)
+    let response= fetch(url);
     let doc = response.html();
     let div = doc.select(".pagination-list").first()
     let el = div.select("span")
@@ -13,10 +10,10 @@ function execute(url) {
         var e = el.get(i);
         data.push({
             name: e.select("a").text(),
-            url: e.select("a").attr("href"),
+            url: encodeURIComponent(e.select("a").attr("href")).replace("%2F","/"),
             host: "https://buondua.com"
         })
     }
 
-    return Response.success(data);
+    return Response.success(data.reverse());
 }

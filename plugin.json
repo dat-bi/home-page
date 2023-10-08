@@ -1,0 +1,20 @@
+{
+    "metadata": {
+        "author": "hieu05",
+        "description": "🧐"
+    },
+    "data": [
+        {
+            "name": "Buondua",
+            "author": "hieu05",
+            "path": "https://raw.githubusercontent.com/hieu313/home-page/main/buondua/plugin.zip",
+            "version": 2,
+            "source": "https://buondua.com/",
+            "icon": "https://raw.githubusercontent.com/hieu313/home-page/main/buondua/icon.png",
+            "description": "Đọc truyện trên trang https://buondua.com/",
+            "type": "comic",
+            "locale": "vi_VN",
+            "tag": "nsfw"
+        }
+    ]
+}
